@@ -1,50 +1,66 @@
 package ROLEX;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 public class PC extends ss{
-public static void main(String[] args) {
-	JFrame f=new JFrame("multi Layout");
-	JPanel toppanel=new JPanel();
-	JLabel l1=new JLabel("Login Page");
-	l1.setForeground(Color.green);
-	l1.setFont(new Font("Arial",Font.BOLD,20));
-	toppanel.add(l1);
-	toppanel.setLayout(new FlowLayout());
-	
-	JPanel midpanel=new JPanel();
-	JButton b1=new JButton("Swiggy");
-	JButton b2=new JButton("Zomato");
-	JButton b3=new JButton("Filpkart");
-	JButton b4=new JButton("Amazon");
-	midpanel.add(b1);
-	midpanel.add(b2);
-	midpanel.add(b3);
-	midpanel.add(b4);
-	midpanel.setLayout(new GridLayout(2,2));
-	
-	JPanel bottompanel=new JPanel();
-	bottompanel.setLayout(new BoxLayout(bottompanel,BoxLayout.X_AXIS));
-	JButton f1=new JButton("search");
-	JButton f2=new JButton("window");
-	JButton f3=new JButton("chrome");
-	JButton f4=new JButton("copilot");
-	bottompanel.add(f1);
-	bottompanel.add(f2);
-	bottompanel.add(f3);
-	bottompanel.add(f4);
-	
-	f.setLayout(new BorderLayout());
-	f.add(toppanel, BorderLayout.NORTH);
-	f.add(midpanel, BorderLayout.CENTER);
-	f.add(bottompanel, BorderLayout.SOUTH);
+	public static void main(String[] args) {
+		JFrame f= new JFrame("HELLO");
+		JCheckBox checkbox = new JCheckBox("I Agree");
+		checkbox.setBounds(30,60,100,20);
+		f.add(checkbox);
+		String[]courses = {"java","python","C++","HTML"};
+		JList<String>courseList = new JList<>(courses);
+		JScrollPane pl = new JScrollPane(courseList);
+		pl.setBounds(340,110,100,60);
+		f.add(pl);
+		JRadioButton male = new JRadioButton("Male");
+		male.setBounds(340,70,200,30);
+		JRadioButton female = new JRadioButton("Female");
+		female.setBounds(440,70,200,30);
+		f.add(male);
+		f.add(female);
+		JTextArea textarea = new JTextArea("Enter Description here");
+		JScrollPane scrollpane = new JScrollPane(textarea);
+		scrollpane.setBounds(30,90,200,200);
+		f.add(scrollpane);
+		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Languages");
+		DefaultMutableTreeNode java = new DefaultMutableTreeNode("java");
+		DefaultMutableTreeNode python = new DefaultMutableTreeNode("python");
+		root.add(java);
+		DefaultMutableTreeNode sw = new DefaultMutableTreeNode("swing");
+		java.add(sw);
+		root.add(python);
+		JTree tree = new JTree(root);
+		JScrollPane treeScroll = new JScrollPane(tree);
+		treeScroll.setBounds(650,100,150,100);
+		f.add(treeScroll);
+		JButton b = new JButton("click me");
+		b.setBounds(350,500,200,20);
+		b.addActionListener(new ActionListener() {
 
-	f.setSize(1000,800);
-	f.setVisible(true);
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JDialog d = new JDialog(f,"hello",true);
+				JLabel l = new JLabel("UMESH");
+				l.setBounds(30,30,50,10);
+				d.add(l);
+				d.setSize(200,100);
+				d.setLayout(null);
+				d.setVisible(true);
+				
+			}});
+		f.add(b);
+		
+		f.setLayout(null);
+		f.setSize(1000,800);
+		f.setVisible(true);
+		
+		
+		
 }
+
 }
